@@ -1,26 +1,26 @@
 package com.reemteam.tournamentapi.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
 
+import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder(toBuilder = true)
+//@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@Builder(toBuilder = true)
+@Entity
 public class Tournament {
+    @Id
+    @GeneratedValue
     private int id;
     private String name;
     private String type;
-    private List<User> players;
-    private List<Match> matches;
     private int matchesRemaining;
-    private User winner;
+    private int winner;
     private Date startDate;
     private Date endDate;
-    private User createdUser;
+    private int createdPlayer;
 }

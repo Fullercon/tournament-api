@@ -1,24 +1,21 @@
 package com.reemteam.tournamentapi.model;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
-//import javax.persistence.GeneratedValue;
-//import javax.persistence.Id;
-
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-@Builder(toBuilder = true)
+//@Data
+//@NoArgsConstructor
+//@AllArgsConstructor
+//@Builder(toBuilder = true)
+@Entity
 public class Match {
-//    @Id
-//    @GeneratedValue
+    @Id
+    @GeneratedValue
     private int id;
     private int tournamentId;
-    private User homePlayer;
-    private User awayPlayer;
+    private int homePlayer;
+    private int awayPlayer;
     private String status;
-    private User winner;
+    private int winner;
 }
