@@ -8,9 +8,9 @@ import org.junit.Test;
 import java.time.LocalDate;
 import java.sql.Date;
 
-import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
-import static org.hamcrest.CoreMatchers.*;
+import static org.mockito.Mockito.*
+import static org.junit.Assert.*
+import static org.hamcrest.CoreMatchers.*
 
 class TournamentServiceTest {
 

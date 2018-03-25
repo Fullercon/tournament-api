@@ -1,0 +1,22 @@
+[
+  {
+    "id":1,
+    "name":"The Best CUP EVER",
+    "type":"Round Robin",
+    "matchesRemaining":12,
+    "winner":0,
+    "startDate":1518220800000,
+    "endDate":1527721200000,
+    "createdPlayer":1
+  },
+  {
+    "id":2,
+    "name":"The Second Best CUP EVER",
+    "type":"Round Robin",
+    "matchesRemaining":12,
+    "winner":0,
+    "startDate":1520640000000,
+    "endDate":1538262000000,
+    "createdPlayer":1
+  }
+]
