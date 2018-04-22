@@ -1,4 +1,4 @@
-package com.reemteam.tournamentapi.integrationTests
+package com.reemteam.tournamentapi.integration
 
 import com.fasterxml.jackson.databind.ObjectMapper
 import com.reemteam.tournamentapi.TournamentApiApplication

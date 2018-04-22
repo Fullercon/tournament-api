@@ -39,10 +39,17 @@ public class TournamentController {
         return tournamentService.getTournamentById(id);
     }
 
+    @RequestMapping(path="/tournaments/{id}", method=RequestMethod.PATCH)
+    @ResponseBody
+    public Tournament updateTournament(@PathVariable("id") int id, @RequestBody Map<String, String> updates){
+        return tournamentService.updateTournament(id, updates);
+    }
+
+
     @RequestMapping(path="/tournaments/{id}", method=RequestMethod.PUT)
     @ResponseBody
-    public Tournament updateTournament(@PathVariable("id") int id, @RequestBody Tournament tournamentBody){
-        return tournamentService.updateTournament(id, tournamentBody);
+    public Tournament updateWholeTournament(@PathVariable("id") int id, @RequestBody Tournament tournamentBody){
+        return tournamentService.updateWholeTournament(id, tournamentBody);
     }
 
     @RequestMapping(path="/tournaments/{id}", method=RequestMethod.DELETE)

@@ -1,6 +1,8 @@
-package com.reemteam.tournamentapi.service;
+package com.reemteam.tournamentapi.unit;
 
-import com.reemteam.tournamentapi.model.Tournament;
+import com.reemteam.tournamentapi.model.Tournament
+import com.reemteam.tournamentapi.service.TournamentRepository
+import com.reemteam.tournamentapi.service.TournamentService;
 import org.assertj.core.util.Lists;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,17 +14,17 @@ import static org.mockito.Mockito.*
 import static org.junit.Assert.*
 import static org.hamcrest.CoreMatchers.*
 
-class TournamentServiceTest {
+class TournamentService {
 
     TournamentRepository tournamentRepository = mock(TournamentRepository.class)
-    TournamentService tournamentService;
+    com.reemteam.tournamentapi.service.TournamentService tournamentService;
     Tournament tournament
 
 
 
     @Before
     void setUp() throws Exception {
-        tournamentService = new TournamentService(tournamentRepository)
+        tournamentService = new com.reemteam.tournamentapi.service.TournamentService(tournamentRepository)
 
         tournament = new Tournament()
         tournament.name = "Wooo best tournament"
@@ -60,7 +62,7 @@ class TournamentServiceTest {
     }
 
     @Test
-    void updateTournament() {
+    void updateWholeTournament() {
         Tournament newTournament = new Tournament()
         newTournament.name = "Wooo worst tournament"
         newTournament.createdPlayer = 2
@@ -73,7 +75,7 @@ class TournamentServiceTest {
         when(tournamentRepository.findOne(anyInt())).thenReturn(tournament)
         when(tournamentRepository.save(any(Tournament.class))).thenReturn(newTournament)
 
-        Tournament actualNewTournament = tournamentService.updateTournament(1, newTournament)
+        Tournament actualNewTournament = tournamentService.updateWholeTournament(1, newTournament)
 
         assertEquals(newTournament, actualNewTournament)
     }
