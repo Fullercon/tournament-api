@@ -1,0 +1,5 @@
+[
+  { "op": "replace", "path": "/name", "value": "The Piston Cup"},
+  { "op": "add", "path": "/anotherName", "value": "another name"},
+  { "op": "copy", "from": "/winner", "path": "/loser"}
+]

@@ -1,0 +1,3 @@
+[
+  { "op": "copy", "from": "/winner", "path": "/matchesRemaining"}
+]

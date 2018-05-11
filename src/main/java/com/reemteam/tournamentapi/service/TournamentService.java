@@ -1,10 +1,15 @@
 package com.reemteam.tournamentapi.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.flipkart.zjsonpatch.JsonPatch;
+import com.flipkart.zjsonpatch.JsonPatchApplicationException;
 import com.reemteam.tournamentapi.model.Match;
 import com.reemteam.tournamentapi.model.Tournament;
 import com.reemteam.tournamentapi.model.Player;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
 
 import java.text.ParseException;
@@ -34,10 +39,23 @@ public class TournamentService {
         return tournamentRepository.save(tournament);
     }
 
-    public Tournament updateTournament(int id, Map<String, String> updatedFields){
+    public Tournament updateTournament(int id, JsonNode jsonPatch){
+        ObjectMapper mapper = new ObjectMapper();
         Tournament tournament = tournamentRepository.findOne(id);
-        tournament = updateCorrectFields(updatedFields, tournament);
-        tournamentRepository.save(tournament);
+        try {
+            JsonNode sourceTournament = mapper.valueToTree(tournament);
+            JsonNode updatedTournament = JsonPatch.apply(jsonPatch, sourceTournament);
+            tournament = mapper.treeToValue(updatedTournament, Tournament.class);
+            tournamentRepository.save(tournament);
+        } catch (JsonProcessingException e) {
+            System.out.println("Error processing json in patch request. Cannot add fields. " + e);
+        } catch (DataIntegrityViolationException e) {
+            System.out.println("Cannot remove data " + e.getMessage());
+        } catch (JsonPatchApplicationException e) {
+            System.out.println("Operation used is invalid " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Something bad happened " + e.getMessage());
+        }
         return tournament;
     }
 

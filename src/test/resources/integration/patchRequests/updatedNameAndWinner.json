@@ -1,0 +1,4 @@
+[
+  { "op": "replace", "path": "/name", "value": "The Piston Cup"},
+  { "op": "replace", "path": "/winner", "value": 2}
+]

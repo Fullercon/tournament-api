@@ -1,5 +1,6 @@
 package com.reemteam.tournamentapi.controller;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.reemteam.tournamentapi.model.Tournament;
 import com.reemteam.tournamentapi.service.TournamentService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,7 @@ public class TournamentController {
 
     @RequestMapping(path="/tournaments/{id}", method=RequestMethod.PATCH)
     @ResponseBody
-    public Tournament updateTournament(@PathVariable("id") int id, @RequestBody Map<String, String> updates){
+    public Tournament updateTournament(@PathVariable("id") int id, @RequestBody JsonNode updates){
         return tournamentService.updateTournament(id, updates);
     }
 
