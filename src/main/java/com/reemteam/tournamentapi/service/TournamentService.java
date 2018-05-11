@@ -68,37 +68,6 @@ public class TournamentService {
         tournamentRepository.delete(id);
     }
 
-    private Tournament updateCorrectFields(Map<String, String> updatedFields, Tournament tournament) {
-        for (Map.Entry<String, String> entry : updatedFields.entrySet()) {
-            switch (entry.getKey()) {
-                case "name":
-                    tournament.setName(entry.getValue());
-                    break;
-                case "type":
-                    tournament.setType(entry.getValue());
-                    break;
-                case "matchesRemaining":
-                    tournament.setMatchesRemaining(convertToInt(entry.getValue()));
-                    break;
-                case "winner":
-                    tournament.setWinner(convertToInt(entry.getValue()));
-                    break;
-                case "startDate":
-                    Date newStartDate = parseDate(entry.getKey(), entry.getValue());
-                    if(newStartDate != null) tournament.setStartDate(newStartDate);
-                    break;
-                case "endDate":
-                    Date newEndDate = parseDate(entry.getKey(), entry.getValue());
-                    if(newEndDate != null) tournament.setStartDate(newEndDate);
-                    break;
-                case "createdPlayer":
-                    tournament.setCreatedPlayer(convertToInt(entry.getValue()));
-                    break;
-            }
-        }
-        return tournament;
-    }
-
     private Tournament updateTournamentValues(Tournament oldTournament, Tournament newTournament){
         oldTournament.setName(newTournament.getName());
         oldTournament.setType(newTournament.getType());
