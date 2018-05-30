@@ -6,6 +6,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.flipkart.zjsonpatch.JsonPatch;
 import com.flipkart.zjsonpatch.JsonPatchApplicationException;
 import com.reemteam.tournamentapi.model.Match;
+import com.reemteam.tournamentapi.model.MatchStatus;
 import com.reemteam.tournamentapi.model.Tournament;
 import com.reemteam.tournamentapi.model.TournamentType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,7 +58,7 @@ public class MatchService {
                                     .homePlayer(playerId)
                                     .awayPlayer(players.get(i))
                                     .tournamentId(tournamentId)
-                                    .status("UNDECIDED")
+                                    .status(MatchStatus.UNDECIDED)
                                     .build()
                     );
                 }
@@ -71,7 +72,7 @@ public class MatchService {
                                 .homePlayer(match.getAwayPlayer())
                                 .awayPlayer(match.getHomePlayer())
                                 .tournamentId(tournamentId)
-                                .status("UNDECIDED")
+                                .status(MatchStatus.UNDECIDED)
                                 .build()
                 );
             }

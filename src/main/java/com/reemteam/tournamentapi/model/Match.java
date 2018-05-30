@@ -23,6 +23,7 @@ public class Match {
     private Integer tournamentId;
     private Integer homePlayer;
     private Integer awayPlayer;
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private MatchStatus status;
     private Integer winner;
 }

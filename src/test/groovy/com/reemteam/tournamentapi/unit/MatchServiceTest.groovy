@@ -1,6 +1,7 @@
 package com.reemteam.tournamentapi.unit
 
 import com.reemteam.tournamentapi.model.Match
+import com.reemteam.tournamentapi.model.MatchStatus
 import com.reemteam.tournamentapi.model.Tournament
 import com.reemteam.tournamentapi.service.MatchRepository
 import com.reemteam.tournamentapi.service.MatchService
@@ -10,6 +11,7 @@ import org.junit.runner.RunWith
 import org.mockito.ArgumentCaptor
 import org.mockito.runners.MockitoJUnitRunner
 
+import static com.reemteam.tournamentapi.model.MatchStatus.UNDECIDED
 import static com.reemteam.tournamentapi.model.TournamentType.ROUND_ROBIN
 import static org.junit.Assert.assertEquals
 import static org.mockito.Mockito.mock
@@ -79,7 +81,7 @@ class MatchServiceTest {
         return Match.builder()
                     .homePlayer(homePlayer)
                     .awayPlayer(awayPlayer)
-                    .status("UNDECIDED")
+                    .status(UNDECIDED)
                     .tournamentId(tournId)
                     .winner(null)
                     .build()
