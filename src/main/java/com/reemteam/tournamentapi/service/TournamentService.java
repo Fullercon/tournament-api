@@ -8,6 +8,7 @@ import com.flipkart.zjsonpatch.JsonPatchApplicationException;
 import com.reemteam.tournamentapi.model.Match;
 import com.reemteam.tournamentapi.model.Tournament;
 import com.reemteam.tournamentapi.model.Player;
+import com.reemteam.tournamentapi.model.TournamentPlayer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Service;
@@ -16,11 +17,12 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 @Service
 public class TournamentService {
 
-    private  TournamentRepository tournamentRepository;
+    private TournamentRepository tournamentRepository;
 
     @Autowired
     public  TournamentService (TournamentRepository tournamentRepository) {
@@ -31,13 +33,20 @@ public class TournamentService {
         return tournamentRepository.findAll();
     }
 
+    public List<Tournament> getAllTournamentsWithIds(List<Integer> ids){
+        return tournamentRepository.findByIdIn(ids);
+    }
+
     public Tournament getTournamentById(int id){
         return tournamentRepository.findOne(id);
     }
 
+
+
     public Tournament createTournament(Tournament tournament){
         return tournamentRepository.save(tournament);
     }
+
 
     public Tournament updateTournament(int id, JsonNode jsonPatch){
         ObjectMapper mapper = new ObjectMapper();
@@ -79,18 +88,4 @@ public class TournamentService {
         tournamentRepository.save(oldTournament);
         return oldTournament;
     }
-
-    private int convertToInt (String integer) {
-        return Integer.parseInt(integer);
-    }
-
-    private Date parseDate (String date, String dateValue) {
-        try {
-            return new SimpleDateFormat("yyyy-MM-dd").parse(dateValue);
-        } catch (ParseException e) {
-            System.out.println("Unable to parse " + date + " value of " + date);
-            return null;
-        }
-    }
-
 }

@@ -17,6 +17,7 @@ CREATE TABLE tournaments (
   name VARCHAR(20) NOT NULL,
   type VARCHAR(20) NOT NULL,
   winner BIGINT,
+  home_aways_each BIGINT,
   start_date DATE NOT NULL,
   matches_remaining INT NOT NULL,
   end_date DATE,

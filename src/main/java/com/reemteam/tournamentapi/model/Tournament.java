@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,10 +18,15 @@ public class Tournament {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private String type;
+    @Enumerated(EnumType.STRING)
+    private TournamentType type;
     private Integer matchesRemaining;
     private Integer winner;
+    private Integer homeAwaysEach;
     private Date startDate;
     private Date endDate;
     private Integer createdPlayer;
+
+    @Transient
+    private List<Integer> players;
 }

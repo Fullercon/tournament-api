@@ -1,7 +1,7 @@
 {
   "id":1,
   "name":"The Piston Cup",
-  "type":"Round Robin",
+  "type":"ROUND_ROBIN",
   "matchesRemaining":12,
   "winner":2,
   "startDate":1518220800000,

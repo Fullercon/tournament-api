@@ -1,4 +1,4 @@
 package com.reemteam.tournamentapi.unit
 
-class TournamentController {
+class TournamentControllerTest {
 }

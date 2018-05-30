@@ -3,6 +3,7 @@ package com.reemteam.tournamentapi.unit
 import com.fasterxml.jackson.databind.JsonNode
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.reemteam.tournamentapi.model.Tournament
+import com.reemteam.tournamentapi.model.TournamentType
 import com.reemteam.tournamentapi.service.TournamentRepository
 import com.reemteam.tournamentapi.service.TournamentService;
 import org.assertj.core.util.Lists;
@@ -17,12 +18,11 @@ import static org.mockito.Mockito.*
 import static org.junit.Assert.*
 import static org.hamcrest.CoreMatchers.*
 
-class TournamentService {
+class TournamentServiceTest {
 
     TournamentRepository tournamentRepository = mock(TournamentRepository.class)
     com.reemteam.tournamentapi.service.TournamentService tournamentService;
     Tournament tournament
-
 
 
     @Before
@@ -36,7 +36,7 @@ class TournamentService {
         tournament.startDate = Date.valueOf(LocalDate.of(2015, 01, 01))
         tournament.matchesRemaining = 0
         tournament.winner = 1
-        tournament.type = "Round Robin"
+        tournament.type = TournamentType.ROUND_ROBIN
     }
 
     @Test
@@ -73,7 +73,7 @@ class TournamentService {
         newTournament.startDate = Date.valueOf(LocalDate.of(2015, 01, 01))
         newTournament.matchesRemaining = 0
         newTournament.winner = 1
-        newTournament.type = "Round Robin"
+        newTournament.type = TournamentType.ROUND_ROBIN
 
         when(tournamentRepository.findOne(anyInt())).thenReturn(tournament)
         when(tournamentRepository.save(any(Tournament.class))).thenReturn(newTournament)
@@ -136,7 +136,7 @@ class TournamentService {
         newTournament.startDate = Date.valueOf(LocalDate.of(2015, 01, 01))
         newTournament.matchesRemaining = 1
         newTournament.winner = 1
-        newTournament.type = "Round Robin"
+        newTournament.type = TournamentType.ROUND_ROBIN
 
         ObjectMapper objectMapper = new ObjectMapper()
         File file = new ClassPathResource("unit/copyJsonPatchAlreadyExisitingPath.json").getFile()
@@ -201,7 +201,7 @@ class TournamentService {
         newTournament.startDate = Date.valueOf(LocalDate.of(2015, 01, 01))
         newTournament.matchesRemaining = 1
         newTournament.winner = null
-        newTournament.type = "Round Robin"
+        newTournament.type = TournamentType.ROUND_ROBIN
 
         ObjectMapper objectMapper = new ObjectMapper()
         File file = new ClassPathResource("unit/moveJsonPatchValidPath.json").getFile()
@@ -252,7 +252,7 @@ class TournamentService {
         newTournament.startDate = Date.valueOf(LocalDate.of(2015, 01, 01))
         newTournament.matchesRemaining = 0
         newTournament.winner = null
-        newTournament.type = "Round Robin"
+        newTournament.type = TournamentType.ROUND_ROBIN
 
         ObjectMapper objectMapper = new ObjectMapper()
         File file = new ClassPathResource("unit/removeJsonPatchValidPath.json").getFile()
@@ -327,7 +327,7 @@ class TournamentService {
         newTournament.startDate = Date.valueOf(LocalDate.of(2015, 01, 01))
         newTournament.matchesRemaining = 0
         newTournament.winner = 1
-        newTournament.type = "Round Robin"
+        newTournament.type = TournamentType.ROUND_ROBIN
 
         ObjectMapper objectMapper = new ObjectMapper()
         File file = new ClassPathResource("unit/replaceJsonPatchValid.json").getFile()

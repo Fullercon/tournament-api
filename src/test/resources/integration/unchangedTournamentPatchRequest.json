@@ -1,7 +1,7 @@
 {
   "id":1,
   "name":"The Best CUP EVER",
-  "type":"Round Robin",
+  "type":"ROUND_ROBIN",
   "matchesRemaining":12,
   "winner":0,
   "startDate":1518220800000,
