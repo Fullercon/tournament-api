@@ -18,3 +18,8 @@ INSERT INTO matches (id, tournament_id, home_player, away_player, status, winner
 INSERT INTO matches (id, tournament_id, home_player, away_player, status, winner) VALUES (10, 1, 4, 1, 'UNDECIDED', 0);
 INSERT INTO matches (id, tournament_id, home_player, away_player, status, winner) VALUES (11, 1, 4, 2, 'UNDECIDED', 0);
 INSERT INTO matches (id, tournament_id, home_player, away_player, status, winner) VALUES (12, 1, 4, 3, 'UNDECIDED', 0);
+
+INSERT INTO tournament_players(id,tournament_id, player_id) VALUES (1, 1, 1);
+INSERT INTO tournament_players(id,tournament_id, player_id) VALUES (2, 1, 2);
+INSERT INTO tournament_players(id,tournament_id, player_id) VALUES (3, 1, 3);
+INSERT INTO tournament_players(id,tournament_id, player_id) VALUES (4, 1, 4);

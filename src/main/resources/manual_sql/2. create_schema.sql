@@ -33,6 +33,12 @@ CREATE TABLE players (
   avatar_file_path VARCHAR(100)
 );
 
+CREATE TABLE tournament_players (
+  id BIGINT PRIMARY KEY NOT NULL,
+  tournament_id BIGINT NOT NULL,
+  player_id BIGINT NOT NULL
+);
+
 CREATE TABLE matches (
   id BIGINT PRIMARY KEY NOT NULL,
   tournament_id BIGINT NOT NULL,
@@ -89,6 +95,24 @@ ON DELETE CASCADE
   NOT VALID;
 CREATE INDEX "fki_FK_TOURNAMENT_ID_CONSTRAINT"
   ON public.matches(tournament_id);
+
+ALTER TABLE public.tournament_players
+  ADD CONSTRAINT "TOURNAMENT_ID_FK_CONSTRAINT" FOREIGN KEY (tournament_id)
+REFERENCES public.tournaments (id) MATCH SIMPLE
+ON UPDATE NO ACTION
+ON DELETE NO ACTION
+  NOT VALID;
+CREATE INDEX "fki_TOURNAMENT_ID_FK_CONSTRAINT"
+  ON public.tournament_players(tournament_id);
+
+ALTER TABLE public.tournament_players
+  ADD CONSTRAINT "PLAYER_ID_FK_CONSTRAINT" FOREIGN KEY (player_id)
+REFERENCES public.players (id) MATCH SIMPLE
+ON UPDATE NO ACTION
+ON DELETE NO ACTION
+  NOT VALID;
+CREATE INDEX "fki_PLAYER_ID_FK_CONSTRAINT"
+  ON public.tournament_players(player_id);
 
 GRANT SELECT, INSERT, UPDATE, DELETE
 ON ALL TABLES IN SCHEMA public

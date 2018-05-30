@@ -8,3 +8,4 @@ DROP USER app_user;
 DELETE FROM tournaments;
 DELETE FROM players;
 DELETE FROM matches;
+DELETE FROM tournament_players;
