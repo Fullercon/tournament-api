@@ -8,20 +8,12 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Data
-//@NoArgsConstructor
-//@AllArgsConstructor
-//@Builder(toBuilder = true)
-@Entity
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name="players")
-public class Player {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class PlayerResponse {
     private Integer id;
     private String email;
-    private String password;
     private String username;
     private String avatarFilePath;
 }
